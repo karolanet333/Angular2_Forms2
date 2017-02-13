@@ -1,0 +1,22 @@
+<form #locationForm = "ngForm">
+    <div class="form-group">
+        <label for="country">Country: </label>
+        <select name="country" class="form-control" #countryCombo ([ngModel])="location" (change) = "countryChange(countryCombo.value)">
+            <option *ngFor="let country of countries" [value] = "country.id">{{country.description}}</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="province">Province: </label>
+        
+    </div>
+
+    <div class="form-group">
+        <label for="province-divition1">Province Divition 1: </label>
+        
+    </div>
+
+    <div>
+        {{location | json}}
+    </div>
+</form>

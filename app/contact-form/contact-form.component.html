@@ -1,0 +1,86 @@
+<div class="container">
+    <!--TITLE-->
+    <div class="jumbotron">
+        <h2>
+            Contact Form
+        </h2>
+    </div>
+
+    
+    
+    <!--FORM-->
+    <form *ngIf="!submitted" (ngSubmit)="onSubmit()" #contactForm="ngForm">
+
+
+<!--
+        
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control"
+                name="name" id="name"
+                required
+                [(ngModel)]="model.name"
+                #name="ngModel"
+            >
+            <div [hidden]="name.valid || name.pristine" class="alert alert-danger">The name field is required</div>
+        </div>
+
+        
+        <div class="form-group">
+            <label for="surname">Surname: </label>
+            <input type="text" class="form-control"
+                name="surname" id="surname"
+                [(ngModel)]="model.surname"
+                
+            >
+        </div>
+
+        
+        <div class="form-group">
+            <label for="tel1">Telefono 1: </label>
+            <input type="text" class="form-control"
+                name="tel1" id="tel1"
+                [(ngModel)]="model.tel1"
+            >
+        </div>
+-->
+
+        <!--BIRTH DATE-->
+        <div class="form-group">
+            <label for="birthDate">Birth Date: </label>
+            <!--<input class="datepicker form-control" data-date-format="mm/dd/yyyy" [(ngModel)]="model.birthDate">-->
+            <input-date [(ngModel)]="model.birthDate" name ="birthDate" id="birthDate"></input-date>
+        </div>
+        
+        <counter-input name="counter" ngModel></counter-input>
+
+        <!--BUTTONS-->
+        <input type="submit" class="btn btn-primary" value="Submit" [disabled]="!contactForm.form.valid">
+        <input type="button" class="btn btn-default" value=" New " (click)="newModel()">
+    </form>
+
+    <div>
+            <br>
+            test Birth Date: {{model.birthDate}}
+    </div>
+
+    <div *ngIf="submitted">
+        <address>
+            <strong>Name: </strong>
+            <div>{{model.name}}</div>
+        </address>
+        <address>
+            <strong>Surname: </strong>
+            <div>{{model.surname}}</div>
+        </address>
+        <address>
+            <strong>Tel 1: </strong>
+            <div>{{model.tel1}}</div>
+        </address>
+
+        <input type="button" class="btn btn-danger" value=" Back " (click)="submitted=false">
+        <input type="button" class="btn btn-success" value=" New " (click)="newModel()">
+    </div>
+
+    
+</div>
